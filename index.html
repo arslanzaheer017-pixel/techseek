@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+<meta name="description" content="TechSeek helps you discover useful AI tools, explore technology, and learn practical digital skills.">
+<title>TechSeek — Discover What's Next</title>
+<style>
+:root{
+  --bg:#080d18;--panel:#101827;--panel2:#131f31;--line:rgba(160,190,230,.13);
+  --text:#f3f7ff;--muted:#9aabc2;--blue:#5c8dff;--cyan:#47e0d0;--purple:#a78bfa;
+  --radius:20px;--shadow:0 20px 60px rgba(0,0,0,.28)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 80% -10%,rgba(64,111,214,.18),transparent 36%),radial-gradient(ellipse at 0% 30%,rgba(46,197,190,.08),transparent 32%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(8,13,24,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:850;font-size:21px;letter-spacing:-.7px}
+.logo{width:37px;height:37px;border-radius:12px;background:linear-gradient(135deg,#5c8dff,#47e0d0);display:grid;place-items:center;color:#06111d;font-weight:950;box-shadow:0 8px 28px rgba(71,224,208,.2)}
+.brand span:last-child{color:#8faeff}
+.links{display:flex;gap:27px;color:#bdc9da;font-size:13px;font-weight:650}
+.links a:hover{color:var(--cyan)}
+.nav-cta,.primary{border:0;border-radius:12px;background:linear-gradient(110deg,#5c8dff,#47cfc9);color:#071321;font-weight:800;padding:11px 17px;cursor:pointer;box-shadow:0 8px 24px rgba(71,180,220,.17)}
+.menu{display:none;background:none;border:1px solid var(--line);color:white;border-radius:10px;padding:8px 11px}
+.hero{padding:78px 0 62px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(71,224,208,.24);background:rgba(71,224,208,.07);color:#8cf2e7;border-radius:99px;padding:7px 12px;font-size:11px;font-weight:800;letter-spacing:1.15px;text-transform:uppercase}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+h1{font-size:clamp(43px,6vw,70px);line-height:1.04;letter-spacing:-3.5px;margin:22px 0 18px;max-width:720px}
+.gradient{background:linear-gradient(100deg,#80a7ff 10%,#61e8dc 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:16px;max-width:570px;margin:0 0 27px}
+.searchbox{display:flex;align-items:center;gap:10px;background:#111c2c;border:1px solid rgba(137,169,220,.22);border-radius:15px;padding:7px 8px 7px 16px;max-width:570px;box-shadow:var(--shadow)}
+.searchbox input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:white;padding:10px 2px;font-size:14px}
+.searchbox input::placeholder{color:#71839d}
+.searchbox button{border:0;border-radius:10px;background:#5c8dff;color:white;font-weight:750;padding:11px 17px;cursor:pointer}
+.hero-meta{display:flex;gap:20px;margin-top:18px;color:#8496af;font-size:11px}
+.hero-meta b{color:#dbe7fa}
+.hero-visual{position:relative;min-height:370px;display:grid;place-items:center}
+.orbit{position:absolute;width:310px;height:310px;border:1px solid rgba(111,153,239,.17);border-radius:50%;box-shadow:0 0 80px rgba(74,123,255,.08),inset 0 0 80px rgba(74,123,255,.05)}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(71,224,208,.13);border-radius:50%;inset:28px}
+.orbit:after{inset:62px}
+.core{position:relative;width:150px;height:150px;border-radius:38px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(91,139,255,.25),rgba(71,224,208,.12));border:1px solid rgba(144,186,255,.35);box-shadow:0 0 70px rgba(92,141,255,.23);font-size:55px}
+.float-card{position:absolute;background:rgba(18,29,46,.92);border:1px solid rgba(152,181,229,.2);border-radius:15px;padding:13px 15px;box-shadow:var(--shadow);font-size:12px}
+.float-card small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.fc1{top:30px;right:0}.fc2{bottom:42px;left:0}.fc3{bottom:7px;right:25px}
+section{padding:40px 0 56px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:23px}
+.kicker{font-size:10px;color:var(--cyan);font-weight:850;letter-spacing:1.5px;text-transform:uppercase}
+h2{font-size:30px;letter-spacing:-1.2px;margin:5px 0 0}
+.sub{color:var(--muted);font-size:13px;margin:6px 0 0}
+.text-link{color:#8db0ff;font-size:12px;font-weight:750}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
+.cat{background:linear-gradient(145deg,rgba(19,31,49,.9),rgba(13,22,36,.9));border:1px solid var(--line);border-radius:16px;padding:18px;transition:.2s}
+.cat:hover,.tool:hover,.article:hover{transform:translateY(-4px);border-color:rgba(92,141,255,.42)}
+.cat-icon{width:39px;height:39px;border-radius:12px;background:rgba(92,141,255,.13);display:grid;place-items:center;font-size:19px;margin-bottom:13px}
+.cat b{display:block;font-size:13px}.cat small{color:var(--muted);font-size:11px}
+.toolbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:18px}
+.filter{border:1px solid var(--line);background:#101a2a;color:#aebdd1;border-radius:99px;padding:8px 13px;font-size:11px;cursor:pointer}
+.filter.active,.filter:hover{background:rgba(92,141,255,.16);border-color:rgba(92,141,255,.55);color:#dce8ff}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.tool{background:linear-gradient(150deg,#131f31,#0e1726);border:1px solid var(--line);border-radius:18px;padding:19px;transition:.2s;min-height:205px;display:flex;flex-direction:column}
+.tool-top{display:flex;justify-content:space-between;align-items:center}
+.tool-logo{width:43px;height:43px;border-radius:13px;background:#1c2b42;display:grid;place-items:center;font-weight:900;font-size:17px;color:#9ec2ff}
+.tag{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:#8ce7dc;background:rgba(71,224,208,.09);border:1px solid rgba(71,224,208,.16);padding:5px 8px;border-radius:99px}
+.tool h3{font-size:16px;margin:15px 0 5px}.tool p{font-size:11px;color:var(--muted);margin:0 0 17px;flex:1}
+.tool-foot{display:flex;align-items:center;justify-content:space-between;color:#8fa0b8;font-size:10px}
+.visit{color:#9bbaff;font-weight:800}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.feature-main{min-height:290px;border-radius:22px;padding:27px;background:linear-gradient(130deg,rgba(40,74,137,.68),rgba(18,31,52,.94)),radial-gradient(circle at 80% 30%,#3563a7,transparent 35%);border:1px solid rgba(132,169,238,.22);display:flex;flex-direction:column;justify-content:end;overflow:hidden;position:relative}
+.feature-main:before{content:"✦";position:absolute;right:45px;top:22px;font-size:130px;color:rgba(170,210,255,.14)}
+.feature-main h3{font-size:25px;line-height:1.15;max-width:430px;margin:12px 0}
+.feature-main p{color:#c0cee2;font-size:12px;max-width:440px}
+.feature-side{display:grid;gap:13px}
+.mini-article{display:flex;gap:15px;align-items:center;padding:17px;border:1px solid var(--line);border-radius:16px;background:#101a2a}
+.mini-thumb{width:70px;height:70px;flex-shrink:0;border-radius:13px;display:grid;place-items:center;font-size:27px;background:linear-gradient(135deg,rgba(92,141,255,.25),rgba(71,224,208,.1))}
+.mini-article h4{font-size:13px;margin:5px 0}.mini-article p{font-size:10px;color:var(--muted);margin:0}
+.newsletter{border:1px solid rgba(92,141,255,.25);background:linear-gradient(110deg,rgba(35,61,109,.45),rgba(16,28,46,.8));border-radius:22px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.newsletter h3{font-size:21px;margin:0 0 5px}.newsletter p{font-size:12px;color:var(--muted);margin:0}
+.newsletter form{display:flex;gap:8px;min-width:min(390px,100%)}
+.newsletter input{min-width:0;flex:1;background:#0b1422;border:1px solid var(--line);border-radius:10px;padding:11px 13px;color:white;outline:none}
+.newsletter button{border:0;border-radius:10px;padding:0 16px;background:#5c8dff;color:white;font-weight:800;cursor:pointer}
+footer{border-top:1px solid var(--line);padding:28px 0 36px;color:#8192aa;font-size:11px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.footer-links{display:flex;gap:18px}
+.notice{font-size:10px;color:#788aa4;margin-top:18px}
+.empty{grid-column:1/-1;text-align:center;padding:30px;color:var(--muted);border:1px dashed var(--line);border-radius:15px}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:58px}.hero-visual{min-height:300px}.categories{grid-template-columns:repeat(3,1fr)}.tools-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.wrap{width:min(100% - 28px,1160px)}.nav{height:66px}.links{display:none;position:absolute;top:66px;left:0;right:0;background:#0b1422;padding:18px 22px;flex-direction:column;gap:15px;border-bottom:1px solid var(--line)}.links.open{display:flex}.menu{display:block}.nav-cta{display:none}.hero{padding:48px 0 25px;gap:12px}h1{font-size:45px;letter-spacing:-2.3px}.hero p{font-size:14px}.hero-visual{min-height:265px}.orbit{width:245px;height:245px}.core{width:115px;height:115px;font-size:43px}.fc1{right:-2px;top:13px}.fc2{left:-3px;bottom:26px}.fc3{right:0;bottom:0}.section-head{align-items:start;flex-direction:column}h2{font-size:26px}.categories{grid-template-columns:repeat(2,1fr)}.tools-grid{grid-template-columns:1fr}.feature{grid-template-columns:1fr}.newsletter{align-items:stretch;flex-direction:column}.newsletter form{min-width:0}.footer-inner{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}}
+
+.brand-logo img{width:25px;height:25px;object-fit:contain;display:block}
+.mini-thumb{overflow:hidden}.mini-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Premium interactive directory-card effects */
+.tool{
+ position:relative;isolation:isolate;overflow:hidden;
+ transition:transform .28s cubic-bezier(.2,.75,.25,1),border-color .28s ease,box-shadow .28s ease,background .28s ease;
+ cursor:pointer;
+}
+.tool:before{
+ content:"";position:absolute;inset:0;z-index:-1;opacity:0;
+ background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(83,145,255,.16),transparent 48%);
+ transition:opacity .28s ease;pointer-events:none;
+}
+.tool:hover,.tool:focus-within{
+ transform:translateY(-7px);
+ border-color:rgba(91,158,255,.72);
+ box-shadow:0 18px 42px rgba(0,0,0,.34),0 0 0 1px rgba(71,224,208,.10),0 0 30px rgba(65,126,255,.15);
+ background:linear-gradient(145deg,#172740,#101c2e);
+}
+.tool:hover:before,.tool:focus-within:before{opacity:1}
+.tool .tool-logo{
+ transition:transform .28s ease,box-shadow .28s ease,background .28s ease;
+ border:1px solid rgba(155,190,245,.12);
+}
+.tool:hover .tool-logo,.tool:focus-within .tool-logo{
+ transform:translateY(-2px) scale(1.08);
+ background:#243b5c;
+ box-shadow:0 7px 20px rgba(65,126,255,.2);
+}
+.tool .visit{transition:color .2s ease,letter-spacing .2s ease}
+.tool:hover .visit,.tool:focus-within .visit{color:#65e6db;letter-spacing:.2px}
+.tool .tag{transition:background .2s ease,border-color .2s ease}
+.tool:hover .tag{background:rgba(71,224,208,.15);border-color:rgba(71,224,208,.35)}
+.tool:focus-within{outline:2px solid rgba(71,224,208,.4);outline-offset:3px}
+.brand-logo img{width:27px;height:27px;object-fit:contain;display:block;border-radius:5px}
+@media(hover:none){.tool:hover{transform:none;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){.tool,.tool:before,.tool .tool-logo,.tool .visit{transition:none}}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="TechSeek home"><span class="logo">T</span><span>Tech<span>Seek</span></span></a>
+    <nav class="links" id="navLinks">
+      <a href="#tools">AI Tools</a><a href="#categories">Categories</a><a href="#guides">Tech Guides</a><a href="#about">About</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px"><a class="nav-cta" href="#tools">Explore tools ↗</a><button class="menu" id="menuBtn" aria-label="Open menu">☰</button></div>
+  </div>
+</header>
+<main id="home">
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> YOUR GUIDE TO THE DIGITAL WORLD</div>
+      <h1>Discover tools.<br><span class="gradient">Unlock what's next.</span></h1>
+      <p>Find useful AI tools, explore smarter technology, and learn practical digital skills — all in one place. Curated for curious minds and creators.</p>
+      <div class="searchbox"><span style="color:#8ea7ca">⌕</span><input id="searchInput" type="search" placeholder="Search AI tools, guides and topics..." aria-label="Search tools and articles"><button id="searchBtn">Search</button></div>
+      <div class="hero-meta"><span><b>AI tools</b> worth exploring</span><span>•</span><span><b>Practical</b> guides</span><span>•</span><span><b>Fresh</b> discoveries</span></div>
+    </div>
+    <div class="hero-visual" aria-label="Abstract technology illustration">
+      <div class="orbit"></div><div class="core">✧</div>
+      <div class="float-card fc1">✦ AI DISCOVERY<small>Ideas meet intelligence</small></div>
+      <div class="float-card fc2">◈ SMARTER WORKFLOWS<small>Do more with useful tools</small></div>
+      <div class="float-card fc3">↗ TECH EXPLAINED<small>Clear, practical guides</small></div>
+    </div>
+  </div>
+
+  <section id="categories">
+    <div class="wrap">
+      <div class="section-head"><div><div class="kicker">Explore by interest</div><h2>Find your next favourite tool</h2><p class="sub">A starting point for your digital toolkit.</p></div><a class="text-link" href="#tools">Browse directory →</a></div>
+      <div class="categories">
+        <a class="cat" href="#tools" data-filter-link="Writing"><div class="cat-icon">✍️</div><b>AI Writing</b><small>Write, edit and research</small></a>
+        <a class="cat" href="#tools" data-filter-link="Image"><div class="cat-icon">🎨</div><b>AI Image</b><small>Create visual ideas</small></a>
+        <a class="cat" href="#tools" data-filter-link="Video"><div class="cat-icon">🎬</div><b>AI Video</b><small>Make videos faster</small></a>
+        <a class="cat" href="#tools" data-filter-link="Productivity"><div class="cat-icon">⚡</div><b>Productivity</b><small>Work smarter</small></a>
+        <a class="cat" href="#tools" data-filter-link="Research"><div class="cat-icon">🔎</div><b>Research</b><small>Find useful answers</small></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools">
+    <div class="wrap">
+      <div class="section-head"><div><div class="kicker">The directory</div><h2>AI tools to know</h2><p class="sub">Explore 60+ AI tools across writing, image, video, audio, coding, research and automation.</p></div><span class="text-link" id="toolCount">60+ tools listed</span></div>
+      <div class="toolbar" id="filters">
+        <button class="filter active" data-filter="All">All tools</button>
+        <button class="filter" data-filter="Writing">Writing</button>
+        <button class="filter" data-filter="Image">Image</button>
+        <button class="filter" data-filter="Video">Video</button>
+        <button class="filter" data-filter="Productivity">Productivity</button>
+        <button class="filter" data-filter="Research">Research</button><button class="filter" data-filter="Audio">Audio</button><button class="filter" data-filter="Coding">Coding</button><button class="filter" data-filter="Automation">Automation</button>
+      </div>
+      <div class="tools-grid" id="toolsGrid"></div>
+      <p class="notice">TechSeek is an independent discovery website. Tool names and logos belong to their respective owners. Availability, pricing and features can change; verify details on official websites.</p>
+    </div>
+  </section>
+
+  <section id="guides">
+    <div class="wrap">
+      <div class="section-head"><div><div class="kicker">Learn something useful</div><h2>Fresh from the TechSeek journal</h2><p class="sub">Editorial-style guide cards ready for your first published articles.</p></div><a class="text-link" href="#guides">View all guides →</a></div>
+      <div class="feature">
+        <a class="feature-main" href="https://www.google.com/search?q=how+to+choose+AI+tools" target="_blank" rel="noopener"><span class="tag" style="width:max-content">STARTER GUIDE</span><h3>How to choose the right AI tool for your everyday work</h3><p>Start with the task you want to solve, compare capabilities, and check privacy and pricing before signing up.</p><span class="text-link">Explore the topic ↗</span></a>
+        <div class="feature-side">
+          <a class="mini-article" href="https://www.google.com/search?q=AI+prompt+writing+guide" target="_blank" rel="noopener"><div class="mini-thumb"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=240&q=80" alt="Prompt writing on a laptop" loading="lazy"></div><div><span class="kicker">AI BASICS · 5 MIN READ</span><h4>Writing clearer prompts: a beginner's guide</h4><p>Simple ways to get more useful results.</p></div></a>
+          <a class="mini-article" href="https://www.google.com/search?q=free+productivity+tools+for+students" target="_blank" rel="noopener"><div class="mini-thumb"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=240&q=80" alt="Student digital workspace" loading="lazy"></div><div><span class="kicker">PRODUCTIVITY · 4 MIN READ</span><h4>Useful digital tools for students</h4><p>Build a simple, distraction-aware toolkit.</p></div></a>
+          <a class="mini-article" href="https://www.google.com/search?q=AI+image+generator+beginner+guide" target="_blank" rel="noopener"><div class="mini-thumb"><img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=240&q=80" alt="Creative AI image tools" loading="lazy"></div><div><span class="kicker">CREATIVE TECH · 6 MIN READ</span><h4>What to check before using an AI image generator</h4><p>Understand outputs, rights and limitations.</p></div></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="newsletter">
+        <div><div class="kicker">Stay curious</div><h3>Good tech, clearly explained.</h3><p>TechSeek is being built to make useful technology easier to discover.</p></div>
+        <form id="subscribeForm"><input type="email" id="email" placeholder="Your email address" aria-label="Your email address" required><button type="submit">Notify me</button></form>
+      </div>
+      <p id="formMessage" class="notice" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap footer-inner"><a class="brand" href="#home"><span class="logo">T</span><span>Tech<span>Seek</span></span></a><div>Discover tools. Learn skills. Stay curious.</div><div class="footer-links"><a href="#tools">AI Tools</a><a href="#guides">Guides</a><a href="#about">About</a></div></div>
+  <div class="wrap notice">© <span id="year"></span> TechSeek. Built for curious minds.</div>
+</footer>
+<script>
+const toolData = [["ChatGPT", "openai", "Writing", "AI assistant for brainstorming, writing, learning and everyday tasks.", "https://chatgpt.com/"], ["Claude", "anthropic", "Writing", "AI assistant for thoughtful writing, analysis and long documents.", "https://claude.ai/"], ["Google Gemini", "gemini", "Writing", "Google's AI assistant for questions, ideas and multimodal tasks.", "https://gemini.google.com/"], ["Microsoft Copilot", "microsoftcopilot", "Productivity", "AI assistant integrated with Microsoft's apps and services.", "https://copilot.microsoft.com/"], ["Perplexity", "perplexity", "Research", "AI-powered answer engine that helps explore web sources.", "https://www.perplexity.ai/"], ["DeepSeek", "deepseek", "Writing", "AI models and assistant for reasoning, coding and general tasks.", "https://chat.deepseek.com/"], ["Grok", "x", "Writing", "AI assistant from xAI for questions and exploration.", "https://grok.com/"], ["Meta AI", "meta", "Writing", "Meta's AI assistant across its products and web experience.", "https://www.meta.ai/"], ["Poe", "quora", "Writing", "Explore different AI assistants and bots in one place.", "https://poe.com/"], ["Character.AI", "characterai", "Writing", "Create and chat with interactive AI characters.", "https://character.ai/"], ["Mistral Le Chat", "mistralai", "Writing", "Chat with Mistral's AI assistant and models.", "https://chat.mistral.ai/"], ["Hugging Face", "huggingface", "Research", "Discover, test and share machine-learning models and datasets.", "https://huggingface.co/"], ["Midjourney", "midjourney", "Image", "Create stylized images from text prompts.", "https://www.midjourney.com/"], ["Adobe Firefly", "adobe", "Image", "Generate and edit creative images with Adobe's generative AI tools.", "https://firefly.adobe.com/"], ["Canva", "canva", "Image", "Design graphics, presentations and social content.", "https://www.canva.com/"], ["Leonardo AI", "leonardo", "Image", "Generate images and creative assets with AI.", "https://leonardo.ai/"], ["Ideogram", "ideogram", "Image", "Generate images, including designs with readable text.", "https://ideogram.ai/"], ["Microsoft Designer", "microsoft", "Image", "Create social graphics and visual designs with AI assistance.", "https://designer.microsoft.com/"], ["Playground AI", "playground", "Image", "Create and edit AI-generated images.", "https://playground.com/"], ["Krea AI", "krea", "Image", "Explore real-time AI image generation and creative tools.", "https://www.krea.ai/"], ["Dreamina", "bytedance", "Image", "Create AI images and visual concepts.", "https://dreamina.capcut.com/"], ["Remove.bg", "removebg", "Image", "Remove image backgrounds automatically.", "https://www.remove.bg/"], ["Photoroom", "photoroom", "Image", "Create product photos and remove or replace backgrounds.", "https://www.photoroom.com/"], ["Runway", "runway", "Video", "Explore AI video generation and creative production tools.", "https://runwayml.com/"], ["Pika", "pika", "Video", "Create and transform short videos with AI.", "https://pika.art/"], ["Luma Dream Machine", "luma", "Video", "Generate video and explore visual storytelling tools.", "https://lumalabs.ai/dream-machine"], ["Kling AI", "klingai", "Video", "Generate videos and images from creative prompts.", "https://klingai.com/"], ["Synthesia", "synthesia", "Video", "Create presenter-style videos with AI avatars.", "https://www.synthesia.io/"], ["HeyGen", "heygen", "Video", "Create avatar videos and translate video content.", "https://www.heygen.com/"], ["InVideo AI", "invideo", "Video", "Turn ideas and scripts into videos.", "https://invideo.io/"], ["VEED", "veed", "Video", "Edit videos and add captions with browser-based tools.", "https://www.veed.io/"], ["Descript", "descript", "Video", "Edit audio and video using a text-based workflow.", "https://www.descript.com/"], ["CapCut", "capcut", "Video", "Edit videos with templates, effects and AI features.", "https://www.capcut.com/"], ["ElevenLabs", "elevenlabs", "Audio", "Generate natural-sounding AI voices and audio.", "https://elevenlabs.io/"], ["Suno", "suno", "Audio", "Generate songs and music from text prompts.", "https://suno.com/"], ["Udio", "udio", "Audio", "Explore AI-assisted music creation.", "https://www.udio.com/"], ["Adobe Podcast", "adobe", "Audio", "Enhance spoken audio and work with podcast recordings.", "https://podcast.adobe.com/"], ["Otter.ai", "otter", "Audio", "Transcribe and summarize meetings and conversations.", "https://otter.ai/"], ["Notion AI", "notion", "Productivity", "Organize notes, projects and knowledge with AI features.", "https://www.notion.com/product/ai"], ["Grammarly", "grammarly", "Writing", "Improve clarity, tone and correctness in writing.", "https://www.grammarly.com/"], ["DeepL", "deepl", "Writing", "Translate text and improve multilingual communication.", "https://www.deepl.com/"], ["QuillBot", "quillbot", "Writing", "Paraphrase, summarize and refine written text.", "https://quillbot.com/"], ["Jasper", "jasper", "Writing", "Create and manage marketing content with AI.", "https://www.jasper.ai/"], ["Copy.ai", "copyai", "Writing", "AI-assisted workflows and marketing copy.", "https://www.copy.ai/"], ["Writesonic", "writesonic", "Writing", "Create content and explore AI search visibility tools.", "https://writesonic.com/"], ["Gamma", "gamma", "Productivity", "Create presentations, documents and web pages with AI.", "https://gamma.app/"], ["Beautiful.ai", "beautifulai", "Productivity", "Build polished presentations with smart design tools.", "https://www.beautiful.ai/"], ["Napkin AI", "napkin", "Image", "Turn written ideas into diagrams and visuals.", "https://www.napkin.ai/"], ["Cursor", "cursor", "Coding", "AI-powered code editor for building software.", "https://www.cursor.com/"], ["GitHub Copilot", "github", "Coding", "AI coding assistant integrated into developer workflows.", "https://github.com/features/copilot"], ["Replit", "replit", "Coding", "Build, run and deploy apps in an online development environment.", "https://replit.com/"], ["Lovable", "lovable", "Coding", "Build web applications with AI assistance.", "https://lovable.dev/"], ["Bolt.new", "stackblitz", "Coding", "Prompt-driven full-stack web development in the browser.", "https://bolt.new/"], ["v0", "vercel", "Coding", "Generate UI and frontend code from prompts.", "https://v0.app/"], ["Codeium / Windsurf", "codeium", "Coding", "AI-assisted coding and development environment.", "https://windsurf.com/"], ["Zapier", "zapier", "Automation", "Connect apps and automate repetitive workflows.", "https://zapier.com/"], ["Make", "make", "Automation", "Build visual automations between apps and services.", "https://www.make.com/"], ["n8n", "n8n", "Automation", "Create flexible workflow automations and AI agents.", "https://n8n.io/"], ["NotebookLM", "google", "Research", "Research and summarize information from your own sources.", "https://notebooklm.google.com/"], ["Consensus", "consensus", "Research", "Explore research-backed answers from scientific papers.", "https://consensus.app/"], ["Elicit", "elicit", "Research", "Assist literature reviews and research workflows.", "https://elicit.com/"], ["Wolfram|Alpha", "wolfram", "Research", "Compute answers and explore structured knowledge.", "https://www.wolframalpha.com/"], ["Google AI Studio", "google", "Coding", "Experiment with Google's generative AI models and APIs.", "https://aistudio.google.com/"]];
+const grid = document.getElementById('toolsGrid');
+const searchInput = document.getElementById('searchInput');
+let activeFilter = 'All';
+function logoUrl(toolUrl) {
+  try {
+    const domain = new URL(toolUrl).hostname;
+    return 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(domain) + '&sz=128';
+  } catch (e) {
+    return '';
+  }
+}
+function renderTools() {
+  const q = searchInput.value.trim().toLowerCase();
+  const filtered = toolData.filter(t => {
+    const matchesCategory = activeFilter === 'All' || t[2] === activeFilter;
+    const matchesQuery = !q || (t[0]+' '+t[2]+' '+t[3]+' '+t[1]).toLowerCase().includes(q);
+    return matchesCategory && matchesQuery;
+  });
+  grid.innerHTML = filtered.length ? filtered.map((t,i) => `
+    <article class="tool">
+      <div class="tool-top">
+        <div class="tool-logo brand-logo"><img src="${logoUrl(t[4])}" alt="${t[0]} logo" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${t[0].slice(0,1)}'"></div>
+        <span class="tag">${t[2]}</span>
+      </div>
+      <h3>${t[0]}</h3><p>${t[3]}</p>
+      <div class="tool-foot"><span>Official website</span><a class="visit" href="${t[4]}" target="_blank" rel="noopener noreferrer">Visit tool ↗</a></div>
+    </article>`).join('') : '<div class="empty">No matching tools found. Try another search or category.</div>';
+  document.getElementById('toolCount').textContent = filtered.length + ' of ' + toolData.length + ' tools';
+}
+document.getElementById('filters').addEventListener('click',e=>{
+ const btn=e.target.closest('[data-filter]');if(!btn)return;
+ activeFilter=btn.dataset.filter;
+ document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b===btn));
+ renderTools();
+});
+document.querySelectorAll('[data-filter-link]').forEach(link=>link.addEventListener('click',()=>{
+ activeFilter=link.dataset.filterLink;
+ document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.filter===activeFilter));
+ renderTools();
+}));
+document.getElementById('searchBtn').addEventListener('click',()=>{renderTools();document.getElementById('tools').scrollIntoView({behavior:'smooth'})});
+searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){renderTools();document.getElementById('tools').scrollIntoView({behavior:'smooth'})}});
+searchInput.addEventListener('input',renderTools);
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+document.getElementById('subscribeForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ document.getElementById('formMessage').textContent='Thanks! This demo form is not connected to an email service yet. Add a mailing-list provider when you are ready.';
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+renderTools();
+grid.addEventListener('pointermove',e=>{
+ const card=e.target.closest('.tool');
+ if(!card || e.pointerType==='touch') return;
+ const r=card.getBoundingClientRect();
+ card.style.setProperty('--mx',(e.clientX-r.left)+'px');
+ card.style.setProperty('--my',(e.clientY-r.top)+'px');
+});
+</script>
+</body>
+</html>
